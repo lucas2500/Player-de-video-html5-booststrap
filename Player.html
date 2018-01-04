@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<style>
+
+	.pagination {
+		display: inline-block;
+	}
+
+	.pagination a {
+		color: black;
+		float: left;
+		padding: 8px 8px;
+		text-decoration: none;
+	}
+
+
+	.button{
+		background-color: white;
+		border: none;
+		color: black;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		
+	}
+
+	.button:hover{
+
+		background-color: #4CAF50;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="container">
+		<h3 align="center" id="title">Aula 1 - Apresentação do sistema</h3>
+
+		<div class="aula">
+			<div class="video" align="center">
+				<video width="900" height="480" id="AULAS" controls="" preload="none" poster="ES.png">
+					<source src="1.mp4" type="video/mp4">
+					</video>
+					<br />
+					<button class="btn btn-primary" id="play" onclick="playVideo(this)"><span id="icon" class="glyphicon glyphicon-play"></span></button>
+					<button class="btn btn-success" onclick="reload()"><span class="glyphicon glyphicon-repeat"></span></button>
+					<br />
+					<div class="pagination">
+						<a href="#"><button class="button" value="1" id="1" onclick="Aula(this)">1</button></a>
+						<a href="#"><button class="button" value="2" id="2" onclick="Aula(this)">2</button></a>
+						<a href="#"><button class="button" value="3" id="3" onclick="Aula(this)">3</button></a>
+						<a href="#"><button class="button" value="4" id="4" onclick="Aula(this)">4</button></a>
+						<a href="#"><button class="button" value="5" id="5" onclick="Aula(this)">5</button></a>
+						<a href="#"><button class="button" value="6" id="6" onclick="Aula(this)">6</button></a>
+						<a href="#"><button class="button" value="7" id="7" onclick="Aula(this)">7</button></a>
+					</div>
+				</div>
+			</div>
+
+	<script type="text/javascript">
+
+
+		function Aula(objButton){
+
+			var video = document.getElementById('AULAS');
+
+			aula = (objButton.value);
+
+			myVideo = video.canPlayType("video/mp4");
+			if (myVideo == "") {
+					video.src = aula+".ogg";
+
+			} else {
+
+				video.src = aula+".mp4";
+				if(aula == 1){
+
+					$( "#title" ).html("Aula 1 - Apresentação do sistema");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+				else if(aula == 2){
+
+					$('#title').html("Aula 2 - Cadastrando professores e alunos");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";	
+				}
+				else if(aula == 3){
+
+					$('#title').html("Aula 3 - Gerenciando turmas");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+				else if(aula == 4){
+
+					$('#title').html("Aula 4 - Avisos e mensagens");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+				else if(aula == 5){
+
+					$('#title').html("Aula 5 - Criando horários");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+				else if(aula == 6){
+
+					$('#title').html("Aula 6 - Cadastrando novos usuários");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+				else if(aula == 7){
+
+					$('#title').html("Aula 7 - Criando histórico e transferindo alunos");
+					document.getElementById('play').className="btn btn-primary";
+					document.getElementById('icon').className="glyphicon glyphicon-play";
+				} 
+						
+			}
+			video.load();
+		}
+
+		function playVideo(objButton){
+
+			var video = document.getElementById('AULAS');
+
+			  if(video.paused == true){
+
+				document.getElementById('play').className="btn btn-danger";
+				document.getElementById('icon').className="glyphicon glyphicon-pause";
+				video.play();
+				
+			}  else{
+
+				document.getElementById('play').className="btn btn-primary";
+				document.getElementById('icon').className="glyphicon glyphicon-play";
+				video.pause();	
+			}
+		}
+
+
+		function reload(){
+
+			var video = document.getElementById('AULAS');
+			video.pause();
+			video.currentTime = 0;
+			video.autoplay = false;
+			document.getElementById('play').className="btn btn-primary";
+			document.getElementById('icon').className="glyphicon glyphicon-play";
+			video.load();
+
+		}
+	</script>
+</body>
+</html>
